@@ -24,9 +24,9 @@ services:
     restart: always
     environment:
       - WORDPRESS_DB_HOST=maria_db
-      - WORDPRESS_DB_USER=m_user
-      - WORDPRESS_DB_PASSWORD=m_password
-      - WORDPRESS_DB_NAME=m_db
+      - WORDPRESS_DB_USER=${MARIADB_USER}
+      - WORDPRESS_DB_PASSWORD=${MARIADB_PASSWORD}
+      - WORDPRESS_DB_NAME=${MARIADB_DATABASE}
 
 networks:
   maria_word_net:
