@@ -23,6 +23,7 @@ git config --global user.email "abirajru12@gmail.com"
 
 git config --global user.name "rkokkiri76"
 
+1. normal way
 
 # docker network create maria_word_net
 
@@ -34,4 +35,11 @@ git config --global user.name "rkokkiri76"
 
 
 i can able to access wordpress application form http://192.168.2.82:8080/
+
+
+2. docker compose example
+
+user Dcokerfile and docker-compose.yaml
+
+docker compose up -d
 

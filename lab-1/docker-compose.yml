@@ -6,6 +6,12 @@ services:
     image: abiraj2024/rs-mariadb:1.0
     networks:
       - maria_word_net
+    environment:
+      - ENV MARIADB_ROOT_PASSWORD=m_root
+      - MARIADB_USER=m_user
+      - MARIADB_PASSWORD=m_password
+      - MARIADB_DATABASE=m_db
+
   wordpress:
     image: wordpress:latest
     depends_on:
