@@ -1,0 +1,25 @@
+version: '3'
+services:
+  maria_db:
+    build: 
+      context: .
+    image: ${REPO}/rs-mariadb:${TAG}
+    networks:
+      - maria_word_net
+  wordpress:
+    image: wordpress:latest
+    depends_on:
+      - maria_db
+    networks:
+      - maria_word_net
+    ports:
+      - 8080:80
+    restart: always
+    environment:
+      - WORDPRESS_DB_HOST=maria_db
+      - WORDPRESS_DB_USER=${MARIADB_USER}
+      - WORDPRESS_DB_PASSWORD=${MARIADB_PASSWORD}
+      - WORDPRESS_DB_NAME=${MARIADB_DATABASE}  
+
+networks:
+  maria_word_net
