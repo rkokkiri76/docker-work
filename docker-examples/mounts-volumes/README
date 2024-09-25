@@ -1,0 +1,74 @@
+to make data be persistent we will volumes ,  there are two types of volumnes 
+1. bind mount
+    mounting the files or directories from hostmachine to container 
+    you can not use this bind mount in dockerfile
+    
+
+    # in this example we are dynamically providing the content of index html , default nginx html location is /usr/share/nginx/html 
+    create the directory in hostmachine 
+
+    mkdir appbind
+
+    docker run -d --rm -p 8080:80 --mount type=bind,source=./appbind,taret=/usr/share/nginx/html --name web nginx
+     
+
+2. volumes
+
+    # either you can explicitily  create the volume like below or you can directly use in the below options that will create the volume. 
+    # docker volume create mysql-data
+
+    # we can create the directly volume and mount to destination like this, both way its automatically create volume in hostmachine and mount to destination
+    # --mount source=mysql-data,destination=/var/lib/mysql  or -v mysql-data:/var/lib/mysql
+    
+    examples:
+    docker run -d --rm -e MYSQL_ALLOW_EMPTY_PASSWORD=True  --mount source=mysql-data,destination=/var/lib/mysql --name mysql1 mysql
+       or
+    docker run -d --rm -e MYSQL_ROOT_PASSWORD=1234   -v mysql-data:/var/lib/mysql --name mysql1 mysql
+
+
+    # we can re-use that volume for other containers.
+
+    # even though you remove the contaier's the volume still exists in hostmachine and its data is persisted.  
+
+
+
+
+# login to mysql container 
+docker exec -it mysql msqlsh 
+
+or 
+
+mysql -u root -p1234 -h <mysql container ip> -P <mysql port its default is 3306>
+
+
+
+ MySQL  localhost  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.0022 sec)
+ MySQL  localhost  SQL > create database testdb;
+Query OK, 1 row affected (0.0027 sec)
+ MySQL  localhost  SQL > use testdb;
+Default schema set to `testdb`.
+Fetching global names, object names from `testdb` for auto-completion... Press ^C to stop.
+ MySQL  localhost  testdb  SQL > CREATE TABLE Persons ( PersonID int, LastName varchar(255), FirstName varchar(255), Address varchar(255), City varchar(255) );
+Query OK, 0 rows affected (0.0184 sec)
+ MySQL  localhost  testdb  SQL > INSERT INTO Persons (PersonID, LastName, FirstName, Address, City)VALUES (14, 'B. Erichsen', 'Tom', 'Skagen 216', 'Norway');
+Query OK, 1 row affected (0.0091 sec)
+ MySQL  localhost  testdb  SQL > INSERT INTO Persons (PersonID, LastName, FirstName, Address,City)VALUES (17, 'Zbyszek', 'Wolski', 'Keskuskatu 45', 'Finland');
+Query OK, 1 row affected (0.0021 sec)
+ MySQL  localhost  testdb  SQL > select * from Persons;
++----------+-------------+-----------+---------------+---------+
+| PersonID | LastName    | FirstName | Address       | City    |
++----------+-------------+-----------+---------------+---------+
+|       14 | B. Erichsen | Tom       | Skagen 216    | Norway  |
+|       17 | Zbyszek     | Wolski    | Keskuskatu 45 | Finland |
++----------+-------------+-----------+---------------+---------+
+2 rows in set (0.0009 sec)
+ MySQL  localhost  testdb  SQL > \quit
