@@ -22,4 +22,4 @@ services:
       - WORDPRESS_DB_NAME=${MARIADB_DATABASE}  
 
 networks:
-  maria_word_net
+  maria_word_net:

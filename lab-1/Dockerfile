@@ -1,4 +1,4 @@
-FROM marriadb:latest
+FROM mariadb:latest
 
 ENV MARIADB_ROOT_PASSWORD=m_root \
     MARIADB_USER=m_user \
