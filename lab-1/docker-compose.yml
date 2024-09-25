@@ -3,7 +3,7 @@ services:
   maria_db:
     build: 
       context: .
-    image: ${REPO}/mariadb:${TAD}
+    image: ${REPO}/mariadb:${TAG}
     # image: mariadb:latest
     networks:
       - maria_word_net
