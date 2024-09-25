@@ -1,17 +1,17 @@
 version: '3'
 services:
   maria_db:
-    # build: 
-    #   context: .
-    # image: abiraj2024/rs-mariadb:1.0
-    image: mariadb:latest
+    build: 
+      context: .
+    image: abiraj2024/rs-mariadb:1.0
+    # image: mariadb:latest
     networks:
       - maria_word_net
-    # environment:
-    #   - MARIADB_ROOT_PASSWORD=m_root
-    #   - MARIADB_USER=m_user
-    #   - MARIADB_PASSWORD=m_password
-    #   - MARIADB_DATABASE=m_db
+    environment:
+      - MARIADB_ROOT_PASSWORD=m_root
+      - MARIADB_USER=m_user
+      - MARIADB_PASSWORD=m_password
+      - MARIADB_DATABASE=m_db
 
   wordpress:
     image: wordpress:latest
@@ -24,9 +24,9 @@ services:
     restart: always
     environment:
       - WORDPRESS_DB_HOST=maria_db
-      - WORDPRESS_DB_USER=${MARIADB_USER}
-      - WORDPRESS_DB_PASSWORD=${MARIADB_PASSWORD}
-      - WORDPRESS_DB_NAME=${MARIADB_DATABASE}
+      - WORDPRESS_DB_USER=m_user
+      - WORDPRESS_DB_PASSWORD=m_password
+      - WORDPRESS_DB_NAME=m_db
 
 networks:
   maria_word_net:
