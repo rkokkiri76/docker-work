@@ -3,7 +3,7 @@ services:
   maria_db:
     build: 
       context: .
-    image: ${REPO}/rs-mariadb:${TAG}
+    image: abiraj2024/rs-mariadb:1.0
     networks:
       - maria_word_net
   wordpress:
