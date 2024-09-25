@@ -1,9 +1,10 @@
 version: '3'
 services:
   maria_db:
-    build: 
-      context: .
-    image: abiraj2024/rs-mariadb:1.0
+    # build: 
+    #   context: .
+    # image: abiraj2024/rs-mariadb:1.0
+    image: mariadb:latest
     networks:
       - maria_word_net
     environment:
