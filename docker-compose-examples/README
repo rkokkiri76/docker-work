@@ -88,4 +88,4 @@ docker compose -f Custom_compose.yaml logs  <service name>// custom compose fil
 docker compose -f Custom_compose.yaml logs  <service name> --follow // tail the logs
 
 # login to containers
-docker compose exec -it <service> /bin/bash
+docker compose exec  <service> /bin/bash
