@@ -14,6 +14,7 @@ to make data be persistent we will volumes ,  there are two types of volumnes
 
 2. volumes
 
+    # we cannot modify the data volumes manually. if we do that one of the container goes down. 
     # either you can explicitily  create the volume like below or you can directly use in the below options that will create the volume. 
     # docker volume create mysql-data
 

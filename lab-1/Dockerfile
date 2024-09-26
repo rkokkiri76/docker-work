@@ -1,7 +1,10 @@
-FROM mariadb:latest
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
 
-# ENV MARIADB_ROOT_PASSWORD m_root \
-#     MARIADB_USER m_user \
-#     MARIADB_PASSWORD m_password \
-#     MARIADB_DATABASE m_db
 
+# Accept dynamic argument
+ARG APP_NAME
+ENV APP_NAME=${APP_NAME}
+
+# Set environment variable
+ENV ENVIRONMENT=development

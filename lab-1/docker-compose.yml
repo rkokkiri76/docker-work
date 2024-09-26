@@ -3,6 +3,9 @@ services:
   maria_db:
     build: 
       context: .
+      args:
+        - BASE_IMAGE=mariadb:latest
+        - APP_NAME=dbtesting      
     image: ${REPO}/mariadb:${TAG}
     # image: mariadb:latest
     networks:
