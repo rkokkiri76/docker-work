@@ -5,7 +5,7 @@ services:
       context: .
       args:
         - BASE_IMAGE=mariadb:latest
-        - APP_NAME=dbtesting      
+    container_name: mariad_c
     image: ${REPO}/mariadb:${TAG}
     # image: mariadb:latest
     networks:
@@ -17,6 +17,9 @@ services:
       - MARIADB_DATABASE=${DB_DATABASE}
 
   wordpress:
+    container_name: wordp_c
+    args:
+      - APP_NAME=dbtesting  
     image: wordpress:latest
     depends_on:
       - maria_db
