@@ -43,3 +43,49 @@ user Dcokerfile and docker-compose.yaml
 
 docker compose up -d
 
+
+
+####docker compose commands
+
+# this will only build the images
+docker compose build
+
+# get the docker compose version
+docker compose version
+
+# it will create containers applications, run the application   and stop
+docker compose up  
+
+# it will stop application, remove the containers, remove the networks
+docker compose down
+
+
+# push images to docker hub
+docker compose push
+
+#stop container 
+docker compose stop
+
+# start containers
+docker compose start
+
+
+# run the container in background
+docker compose up -d
+
+# run the docker compose using custom docker compose file
+docker compose -f custom_compose.yaml  -d
+
+
+# view container logs
+docker compose logs  // it will show all container logs
+
+docker compose logs WordPress  // specific container logs
+
+
+docker compose -f Custom_compose.yaml logs  <service name>// custom compose fil 
+
+docker compose -f Custom_compose.yaml logs  <service name> --follow // tail the logs
+
+# login to containers
+docker compose exec -it <service> /bin/bash
