@@ -1,1 +1,40 @@
-t
+What is Docker?
+Docker is a configuration management tool that is used to automate the deployment of software in lightweight containers. These containers help applications to work efficiently in different environments.
+
+Features of Docker:
+
+Easy and faster configuration
+Application isolation
+Security management
+High productivity
+High scalability
+Infrastructure independen
+
+
+Docker Image:
+    A Docker Image is a read-only file with a bunch of instructions. When these instructions are executed, it creates a Docker container.
+    
+    Dockerfile:
+    Dockerfile is a simple text file that consists of instructions to build Docker images.
+
+
+
+Instruction	Description
+ADD	Add local or remote files and directories.
+ARG	Use build-time variables.
+CMD	Specify default commands.
+COPY	Copy files and directories.
+ENTRYPOINT	Specify default executable.
+ENV	Set environment variables.
+EXPOSE	Describe which ports your application is listening on.
+FROM	Create a new build stage from a base image.
+HEALTHCHECK	Check a container's health on startup.
+LABEL	Add metadata to an image.
+MAINTAINER	Specify the author of an image.
+ONBUILD	Specify instructions for when the image is used in a build.
+RUN	Execute build commands.
+SHELL	Set the default shell of an image.
+STOPSIGNAL	Specify the system call signal for exiting a container.
+USER	Set user and group ID.
+VOLUME	Create volume mounts.
+WORKDIR	Change working directory.
